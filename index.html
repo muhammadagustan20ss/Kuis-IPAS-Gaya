@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tebak Gaya – IPAS Kelas IV</title>
+<style>
+:root{color-scheme:light dark;--blue:#2563eb;--blue2:#1d4ed8;--gold:#f59e0b;--green:#16a34a;--red:#dc2626;--ink:light-dark(#172033,#f1f5f9);--muted:light-dark(#64748b,#a9b6c8);--surface:light-dark(#fff,#182334);--surface2:light-dark(#f4f7fb,#202d40);--border:light-dark(#dbe4ef,#34445a)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:light-dark(#edf3fb,#0d1521);color:var(--ink)}
+.app{min-height:100vh;background:light-dark(#edf3fb,#0d1521);padding:20px}.wrap{max-width:1050px;margin:auto}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#173b8f,#2563eb 60%,#38bdf8);color:white;border-radius:24px;padding:28px;box-shadow:0 16px 40px #173b8f35}.hero:after{content:'⚡';position:absolute;right:28px;bottom:-18px;font-size:110px;opacity:.14}.school{font-size:14px;font-weight:800;letter-spacing:.08em}.hero h1{font-size:clamp(30px,6vw,52px);margin:7px 0}.hero p{margin:6px 0;max-width:700px}.badge{display:inline-block;margin-top:13px;background:#ffffff24;border:1px solid #ffffff4d;padding:7px 12px;border-radius:999px;font-weight:700}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:0 8px 25px #00000010}.intro{margin-top:18px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.intro h2,.game h2{margin-top:0}.how{background:var(--surface2);border-radius:16px;padding:17px}.how li{margin:8px 0}.btn{border:0;border-radius:13px;padding:12px 18px;font-weight:800;cursor:pointer;font-size:16px;background:var(--surface2);color:var(--ink)}.btn.primary{background:var(--blue);color:white}.btn.primary:hover{background:var(--blue2)}.btn:disabled{opacity:.55;cursor:not-allowed}
+.game{margin-top:18px;display:none}.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{padding:9px 13px;border-radius:12px;background:var(--surface2);font-weight:800}.hearts{letter-spacing:2px}.level{color:var(--blue)}.progress{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:8px 0 20px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),#38bdf8);transition:width .35s}
+.stage{background:var(--surface2);border-radius:18px;padding:22px;text-align:center}.act{font-size:64px;line-height:1;margin:8px 0 14px}.instruction{font-weight:800;color:var(--gold);font-size:17px}.question{font-size:clamp(21px,3vw,28px);font-weight:900;margin:12px auto 20px;max-width:800px}.answers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.answer{text-align:left;border:2px solid var(--border);background:var(--surface);color:var(--ink);border-radius:15px;padding:15px;font-size:17px;font-weight:800;cursor:pointer;transition:.18s}.answer:hover{transform:translateY(-2px);border-color:var(--blue)}.answer.correct{border-color:var(--green);background:light-dark(#ecfdf3,#123322)}.answer.wrong{border-color:var(--red);background:light-dark(#fef2f2,#391b21)}.feedback{min-height:34px;margin:16px 0 4px;font-weight:900;font-size:17px}.nextrow{text-align:center;margin-top:12px}.result{display:none;text-align:center}.result .big{font-size:58px;font-weight:1000;color:var(--blue);margin:8px}.result h2{margin-bottom:4px}.result p{color:var(--muted)}.tips{margin-top:16px;padding:14px;border-left:5px solid var(--gold);background:var(--surface2);border-radius:10px}.footer{text-align:center;color:var(--muted);font-size:13px;margin:18px 0 4px}
+@media(max-width:720px){.app{padding:12px}.intro{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.hero{padding:22px}.card{padding:17px}.act{font-size:52px}}
+</style>
+</head>
+<body>
+<div class="app"><div class="wrap">
+<header class="hero">
+  <div class="school">SD NEGERI 2 LASUSUA</div>
+  <h1>🎭 Tebak Gaya!</h1>
+  <p>Game kuis IPAS Kelas IV — jadilah <b>Detektif Gaya</b> dan tebak gaya yang terjadi dari setiap peristiwa.</p>
+  <span class="badge">10 Misi • 3 Nyawa • 3 Level</span>
+</header>
+
+<section class="intro" id="intro">
+  <div class="card">
+    <h2>🎯 Cara Bermain</h2>
+    <p>Guru dapat <b>memperagakan atau membacakan</b> situasi pada layar tanpa menyebut jawabannya. Siswa memilih jawaban yang paling tepat.</p>
+    <div class="how">
+      <ol>
+        <li>Baca atau peragakan petunjuk.</li>
+        <li>Pilih satu jawaban.</li>
+        <li>Jawaban salah mengurangi satu ❤️.</li>
+        <li>Kumpulkan skor setinggi mungkin.</li>
+      </ol>
+    </div>
+    <button class="btn primary" onclick="startGame()">🚀 Mulai Game</button>
+  </div>
+  <div class="card">
+    <h2>🏆 Target Belajar</h2>
+    <ul>
+      <li>Mengenali gaya sebagai dorongan dan tarikan.</li>
+      <li>Menjelaskan pengaruh gaya terhadap gerak, arah, dan bentuk.</li>
+      <li>Mengenali gaya magnet, gravitasi, dan gesek.</li>
+      <li>Berani menyampaikan alasan jawaban.</li>
+    </ul>
+    <div class="tips"><b>💡 Tips guru:</b> Setelah siswa memilih jawaban, minta mereka menjelaskan bukti dari peragaan.</div>
+  </div>
+</section>
+
+<section class="game card" id="game">
+  <div id="playArea">
+    <div class="topbar">
+      <div><b id="levelName" class="level">LEVEL 1 • PEMULA</b><div class="small" id="counter">Soal 1 dari 10</div></div>
+      <div class="stats"><span class="stat">⭐ Skor: <span id="score">0</span></span><span class="stat hearts" id="hearts">❤️❤️❤️</span></div>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="stage">
+      <div class="act" id="act">⚽</div>
+      <div class="instruction">🎭 PERAGAKAN / BACA PETUNJUK</div>
+      <div class="question" id="question"></div>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="nextrow"><button class="btn primary" id="next" style="display:none" onclick="nextQuestion()">Soal Berikutnya →</button></div>
+    </div>
+  </div>
+  <div class="result" id="result">
+    <div class="big" id="resultEmoji">🏆</div>
+    <h2 id="resultTitle">Detektif Gaya Hebat!</h2>
+    <p id="resultText"></p>
+    <button class="btn primary" onclick="startGame()">🔄 Main Lagi</button>
+    <button class="btn" onclick="backHome()">🏠 Kembali</button>
+  </div>
+</section>
+
+<div class="footer">MPI IPAS Kelas IV • Tebak Gaya • SD Negeri 2 Lasusua • Muhammad Agustan, S.Pd.</div>
+</div></div>
+<script>
+const questions=[
+ {emoji:'⚽',level:1,q:'Guru memperagakan menendang bola. Gaya yang terjadi adalah …',a:['Tarikan','Dorongan','Magnet','Gravitasi'],c:1,why:'Menendang bola memberikan gaya dorong pada bola.'},
+ {emoji:'🪑',level:1,q:'Guru memperagakan menarik kursi agar mendekat. Gaya yang terjadi adalah …',a:['Dorongan','Tarikan','Magnet','Gesek'],c:1,why:'Kursi ditarik mendekat menggunakan gaya tarikan.'},
+ {emoji:'🚪',level:1,q:'Guru memperagakan mendorong pintu hingga terbuka. Gaya yang terjadi adalah …',a:['Tarikan','Dorongan','Gravitasi','Magnet'],c:1,why:'Pintu bergerak menjauh karena mendapat dorongan.'},
+ {emoji:'🗄️',level:1,q:'Guru memperagakan menarik laci keluar. Gaya yang terjadi adalah …',a:['Tarikan','Dorongan','Magnet','Gravitasi'],c:0,why:'Laci ditarik menuju tubuh sehingga termasuk gaya tarikan.'},
+ {emoji:'↪️',level:2,q:'Bola bergerak lurus lalu diberi gaya dari samping sehingga arahnya berubah. Gaya dapat mengubah …',a:['Warna benda','Arah gerak','Massa benda','Bahan benda'],c:1,why:'Gaya dari arah lain dapat mengubah arah gerak benda.'},
+ {emoji:'🧱',level:2,q:'Plastisin diremas hingga bentuknya berubah. Ini membuktikan gaya dapat …',a:['Mengubah bentuk','Mengubah warna','Menghilangkan benda','Menambah massa'],c:0,why:'Tekanan atau tarikan dapat membuat bentuk plastisin berubah.'},
+ {emoji:'🚲',level:2,q:'Sepeda direm hingga berhenti. Gaya yang membantu menghambat gerak adalah …',a:['Magnet','Gravitasi','Gesek','Cahaya'],c:2,why:'Gesekan pada rem dan roda membantu memperlambat serta menghentikan sepeda.'},
+ {emoji:'🧲',level:3,q:'Magnet didekatkan ke klip besi. Klip tertarik karena adanya …',a:['Gaya magnet','Gaya dorong','Gaya gesek','Gaya cahaya'],c:0,why:'Magnet dapat menarik benda tertentu, seperti besi dan baja.'},
+ {emoji:'🍎',level:3,q:'Buah dilepaskan dari tangan lalu jatuh ke bawah. Gaya yang menyebabkannya adalah …',a:['Gaya magnet','Gaya gravitasi','Gaya gesek','Gaya dorong'],c:1,why:'Gravitasi bumi menarik benda menuju permukaan bumi.'},
+ {emoji:'🛝',level:3,q:'Tangan terasa hangat saat digosokkan pada permukaan. Peristiwa ini berkaitan dengan gaya …',a:['Magnet','Gravitasi','Gesek','Tarikan'],c:2,why:'Gesekan antara dua permukaan dapat menghasilkan panas.'}
+];
+let index=0,score=0,lives=3,locked=false;
+function startGame(){index=0;score=0;lives=3;locked=false;document.getElementById('intro').style.display='none';document.getElementById('game').style.display='block';document.getElementById('playArea').style.display='block';document.getElementById('result').style.display='none';renderQuestion();}
+function renderQuestion(){const x=questions[index];locked=false;document.getElementById('levelName').textContent=x.level===1?'LEVEL 1 • PEMULA':x.level===2?'LEVEL 2 • TANGGUH':'LEVEL 3 • DETEKTIF MASTER';document.getElementById('counter').textContent=`Soal ${index+1} dari ${questions.length}`;document.getElementById('score').textContent=score;document.getElementById('hearts').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);document.getElementById('bar').style.width=((index)/questions.length*100)+'%';document.getElementById('act').textContent=x.emoji;document.getElementById('question').textContent=x.q;document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('answers').innerHTML=x.a.map((v,i)=>`<button class="answer" onclick="choose(${i})"><b>${String.fromCharCode(65+i)}.</b> ${v}</button>`).join('');}
+function choose(i){if(locked)return;locked=true;const x=questions[index],buttons=[...document.querySelectorAll('.answer')];buttons.forEach(b=>b.disabled=true);buttons[x.c].classList.add('correct');if(i===x.c){score+=10;document.getElementById('feedback').textContent='✅ Benar! '+x.why;}else{lives--;buttons[i].classList.add('wrong');document.getElementById('feedback').textContent='❌ Belum tepat. '+x.why;}document.getElementById('score').textContent=score;document.getElementById('hearts').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);if(lives===0){setTimeout(showResult,650);return;}if(index<questions.length-1)document.getElementById('next').style.display='inline-block';else setTimeout(showResult,650);}
+function nextQuestion(){index++;renderQuestion();}
+function showResult(){document.getElementById('playArea').style.display='none';document.getElementById('result').style.display='block';document.getElementById('bar').style.width='100%';let title,emoji;if(score>=90){title='Detektif Gaya Hebat!';emoji='🏆'}else if(score>=70){title='Detektif Gaya Cerdas!';emoji='🌟'}else if(score>=50){title='Detektif Gaya Berkembang!';emoji='💪'}else{title='Ayo Coba Lagi!';emoji='🔎'}document.getElementById('resultEmoji').textContent=emoji;document.getElementById('resultTitle').textContent=title;document.getElementById('resultText').textContent=`Skor kamu ${score} dari 100. ${lives===0?'Nyawa habis, tetapi kamu sudah belajar banyak.':'Bagus! Jelaskan kembali satu contoh gaya yang kamu temukan.'}`;}
+function backHome(){document.getElementById('game').style.display='none';document.getElementById('intro').style.display='grid';}
+</script>
+</body>
+</html>
